@@ -1,3 +1,4 @@
+// varsion 1.0.2
 (function($) {
 	$.fn.addStickyNotes = function(options) {
 		var defaults = { 
@@ -7,7 +8,8 @@
 			width: '150',
 			height: '150',
 			left: '0',
-			top:'0'
+			top:'0',
+			save:['note', 'width', 'height', 'top', 'left', 'z-index', 'background-color', 'id']
 		};
 		var settings = $.extend(false, defaults, options);
 		$(this).each(function() {
@@ -29,18 +31,32 @@
 		height: '150',
 		left: '0',
 		top:'0',
+		save:['note', 'width', 'height', 'top', 'left', 'z-index', 'background-color', 'id'],
 		init: function(wrapper, options){
-			this.colors = options['colors'] || ['#FDFB8C', '#FF99CC', '#99FFCC', "#99CCFF"];
-			this.color_index = this.colors.length-1;
-			this.url = options['url'] || "#";
-			this.method_type = options['type'] || "POST";
-			this.height = options['height'] || this.height;
-			this.width = options['width'] || this.width;
-			this.top = options['top'] || this.top;
-			this.left = options['left'] || this.left;
+			this.wrapper = $(wrapper);
+			context = this;
+			$.each(options, function(){
+				switch(this.toString()){
+					case 'type':
+						context.method_type = options['type'];
+					case 'colors':
+						context.colors = options['colors'];
+						context.color_index = this.colors.length-1;
+						context.url = options['url'] || "#";
+					case 'height':
+						context.height = options['height'];
+					case 'width':
+						context.width = options['width']
+					case 'top' :
+						context.top = options['top']
+					case 'left':
+						context.left = options['left']
+					case 'save' :
+						context.save = options['save']
+				}
+			})
 			this.initializeExistingStickyNotes();
 			this.initializeZIndexAndID();
-			this.wrapper = $(wrapper);
 			this.initializeStickyNote();
 		},
 		initializeExistingStickyNotes : function(){
@@ -113,7 +129,20 @@
 		},
 		callback : function(div){
 			if(this.url.length>1){
-				var data = 'id='+div[0].id+'note='+div.children('.textnote')+'&z_index='+div.css('z-index')+'&height='+div.css('height')+'&width='+div.css('width')+'&left='+div.css('left')+'&top='+div.css('top');
+				var data = ""
+				$.each(this.save, function(){
+					if(data.length>0){data += "&"};
+					data += (this + "=");
+					switch(this.toString()){
+						case 'note':
+							alert(1)
+							data += div.children('.textnote').text();
+						case 'id':
+							data += div[0].id;
+						default :
+							data+=div.css(this.toString());
+					}
+				})
 				return $.ajax({type : this.method_type,url : this.url,data : data,error : function(data){div.remove();alert('Unable to save.')},success : function(id){div[0].id=id}});
 			}
 		}

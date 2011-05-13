@@ -17,6 +17,7 @@
     });
 	}
 	function StickyNote(wrapper, options) {
+		console.log(options)
     this.init(wrapper, options);
   };
   StickyNote.prototype = {
@@ -35,24 +36,25 @@
 		init: function(wrapper, options){
 			this.wrapper = $(wrapper);
 			context = this;
-			$.each(options, function(){
-				switch(this.toString()){
+			$.each(options, function(k, v){
+				console.log(k.toString())
+				switch(k.toString()){
 					case 'type':
-						context.method_type = options['type'];
+						context.method_type = v;
 					case 'colors':
-						context.colors = options['colors'];
-						context.color_index = this.colors.length-1;
-						context.url = options['url'] || "#";
+						context.colors = v;
+						context.color_index = v.length-1;
+						context.url = v || "#";
 					case 'height':
-						context.height = options['height'];
+						context.height = v;
 					case 'width':
-						context.width = options['width']
+						context.width = v;
 					case 'top' :
-						context.top = options['top']
+						context.top = v;
 					case 'left':
-						context.left = options['left']
+						context.left = v;
 					case 'save' :
-						context.save = options['save']
+						context.save = v;
 				}
 			})
 			this.initializeExistingStickyNotes();

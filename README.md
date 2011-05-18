@@ -41,15 +41,15 @@ Open your page in any browser and you can add notes, delete notes, resize the no
 
 ##Options
 
-|options|description|default value|
-|-------|-----------|-------------|
-|colors|Colors of sticky notes which is used as background of stick notes|['#FDFB8C', '#FF99CC', '#99FFCC', "#99CCFF"]|
-|color_index|
-|top|
-|left|
-|width|
-|height|
-|url|
-|method_type|
-|save|
+|options    |description                                                      |default value                                                                  |
+|-----------|-----------------------------------------------------------------|-------------------------------------------------------------------------------|
+|colors     |Colors of sticky notes which is used as background of stick notes|['#FDFB8C', '#FF99CC', '#99FFCC', "#99CCFF"]                                   |
+|color_index|Color index which will be used as background                     |0                                                                              |
+|top        |Default top position of sticky note                              |0                                                                              | 
+|left       |Default left position of sticky note                             |0                                                                              |
+|width      |Default width of sticky note                                     |150                                                                            |
+|height     |Default height of sticky note                                    |150                                                                            |
+|url        |URL on which ajax request will be sent                           |'#'                                                                            | 
+|method_type|GET or POST method                                               |POST                                                                           |
+|save       |What fields to be send with request                              |['note', 'width', 'height', 'top', 'left', 'z-index', 'background-color', 'id']|
 

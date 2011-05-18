@@ -41,7 +41,7 @@ Open your page in any browser and you can add notes, delete notes, resize the no
 
 ##Options
 
-|options    |description                                                      |default value                                                                  |
+|Options    |Description                                                      |Default Value                                                                  |
 |-----------|-----------------------------------------------------------------|-------------------------------------------------------------------------------|
 |colors     |Colors of sticky notes which is used as background of stick notes|['#FDFB8C', '#FF99CC', '#99FFCC', "#99CCFF"]                                   |
 |color_index|Color index which will be used as background                     |0                                                                              |

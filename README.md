@@ -20,7 +20,7 @@ jquery-ui.js
 
 ## Getting Started
 
-Copy 'jquery-stickynotes.js' in your javascripts directory and 'stickyNote.css' in your stylesheets directory. Now add the following line in the <head> section of your page
+Copy 'jquery-stickynotes.js' in your javascripts directory and 'stickyNote.css' in your stylesheets directory. Now add the following line in the head section of your page
 	
     <script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript"></script>
@@ -54,7 +54,7 @@ Open your page in any browser and you can add notes, delete notes, resize the no
 |save       |What fields to be send with request                              |['note', 'width', 'height', 'top', 'left', 'z-index', 'background-color', 'id']|
 ##Example 1
 
-Add following code in <head> section
+Add following code in head section
 
 		<script>
 			$(function() {
@@ -77,7 +77,7 @@ and add following code in body section if you already have some notes.
 	
 ##Example 2
 
-Add following code in <head> section
+Add following code in head section
 
 		<script>
 			$(function() {
